@@ -1,46 +1,48 @@
 <?php
+declare(strict_types=1);
+# Scalar types
 
+# bool - true / false
+$completed = true;
 
-$firstName = 'Marco'; // Variable
+# int -1, 2, 3, 0, -5 (no decimal)
+$score = 75;
 
-$firstName = 'Juan';
+#float 1.5, 0.1, 0.005, -15.5
+$price = 0.99;
 
-// Constants
-define('STATUS_PAID', 'paid');
-const STATUS_OTHER = 'other';
+#string - "Marco"
+$greeting = "Hello Marco";
 
-$paid = 'PAIDB';
-define('STATUS_' . $paid, 'PAID');
-echo STATUS_PAIDB;
-echo PHP_VERSION;
-echo __LINE__;
+echo $completed . '<br>';
+echo $score . '<br>';
+echo $price . '<br>';
+echo $greeting . '<br>';
 
-// Variable Variables
-$foo = 'bar';
+# Compound Types
+# Array
+$companies = [1, 2, 3, 0.5, -9.2, 'A', 'b', true];
+print_r($companies);
 
-$$foo = 'baz';
+# Object
+# Callable
+# Iterable
 
-echo "$foo, $bar, ${$foo}";
+# Special types
+# resource
+# null
 
+function sum(float $x, float $y)
+{
+    return $x + $y;
+}
 
+// $sum = sum(2, '3');
+$sum = sum(2.5, 3.4);
 
-?>
+echo $sum . '<br>';
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello World</title>
-</head>
-<body>
-    <h1>
-        <?php echo 'Hello World' ?>
-    </h1>
-    <h2>
-        <?= 'Hello World' ?>
-    </h2>
-    <p>
-        <?= STATUS_PAID ?>
-    </p>
-</body>
-</html>
+var_dump($sum);
+
+$x = (int) '5';
+var_dump($x);
