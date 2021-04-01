@@ -1,58 +1,34 @@
 <?php
 declare(strict_types=1);
 
-function print_array(array $array_to_print) {
-    echo '<pre>';
-    print_r($array_to_print);
-    echo '</pre>';
-
-    echo count($array_to_print);
-}
-
 /* OPERATORS */
 
-// Aritmetic Operators
-$x = +'10';
-$x = 10;
-$y = 2;
+// Switch and Match
+$paymentStatus = 1;
 
-var_dump($x - $y);
-var_dump($x * $y);
-var_dump($x ** $y);
-var_dump($x / $y);
-var_dump(fdiv($x, $y));
-var_dump($x % $y);
-var_dump(fmod($x, $y));
-
-// Assignments Operators
-$x = 5;
-
-// Comparison Operators
-$x = 11;
-$y = 10;
-
-var_dump($x <=> $y);
-
-var_dump(0 == 'hello');
-var_dump(0 == '0');
-
-$x = 'Hello World';
-$y = strpos($x, 'H');
-
-// if ($y === false) {
-    // echo 'H Not Found';
-// } else {
-    // echo 'H Found at index ' . $y;
-// }
-echo '<br>';
-var_dump($y);
-
-$result = $y === false ? 'H Not Found' : 'H Found at index ' . $y;
-echo $result;
+switch ($paymentStatus) {
+    case 1:
+            echo 'Paid';
+            break;
+    case 2:
+    case 3:
+        echo 'Payment Declined';
+        break;
+    case 4:
+        echo 'Pending Payment';
+        break;
+    default:
+        echo 'Unknown Payment Status';
+}
 
 echo '<br>';
 
-// $z = null;
-$y = $z ?? 'hello';
+// Match
+$paymentStatusDisplay = match($paymentStatus) {
+    1 => 'Paid',
+    2,3 => 'Payment Declined',
+    0 => 'Pending Payment',
+    default => 'Unknown Payment Status'
+};
 
-var_dump($y);
+echo $paymentStatusDisplay;
